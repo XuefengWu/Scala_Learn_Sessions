@@ -1,0 +1,17 @@
+@(file: java.io.File,preIndex:Int)
+
+@main("Welcome to Play 2.1") {
+
+
+    <ul>
+        @if(file.getParentFile.getAbsolutePath.length > preIndex) {
+            <li><a href="@routes.Application.file(file.getParentFile.getAbsolutePath.substring(preIndex))">..</a></li>
+        } else {
+            <li><a href="/">..</a></li>
+        }
+        @file.listFiles.map{ file =>
+            <li><a href="@routes.Application.file(file.getAbsolutePath.substring(preIndex))">@file.getName</a></li>
+        }
+    </ul>
+
+}
