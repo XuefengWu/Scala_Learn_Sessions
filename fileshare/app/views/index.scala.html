@@ -9,7 +9,7 @@
         } else {
             <li><i class="icon-arrow-up"></i><a href="/">..</a></li>
         }
-        @file.listFiles.map{ file =>
+        @file.listFiles.filterNot(_.getName.startsWith(".")).map{ file =>
             <li>@if(file.isDirectory){<i class="icon-folder-open"></i>}else{<i class="icon-download"></i>}<a href="@routes.Application.file(file.getAbsolutePath.substring(preIndex))">@file.getName</a></li>
         }
     </ul>

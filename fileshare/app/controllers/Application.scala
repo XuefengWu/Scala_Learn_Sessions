@@ -10,7 +10,6 @@ object Application extends Controller {
   def file(path:String="") = Action {
     val file = new File(s"$ShareRoot/$path")
     if(file.isDirectory){
-      file.getParentFile
       Ok(views.html.index(file,ShareRoot.length+1))
     } else {
       Ok.sendFile(file)
