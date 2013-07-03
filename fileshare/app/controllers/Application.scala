@@ -6,7 +6,7 @@ import java.io.File
 
 object Application extends Controller {
 
-  val ShareRoot = "/Users/twer/Downloads"
+  val ShareRoot = "/Users/twer/Downloads/Scala"
   def file(path:String="") = Action {
     val file = new File(s"$ShareRoot/$path")
     if(file.isDirectory){
