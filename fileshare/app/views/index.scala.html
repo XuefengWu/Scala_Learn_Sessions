@@ -3,14 +3,14 @@
 @main("Welcome to Play 2.1") {
 
 
-    <ul>
+    <ul class="unstyled">
         @if(file.getParentFile.getAbsolutePath.length > preIndex) {
-            <li><a href="@routes.Application.file(file.getParentFile.getAbsolutePath.substring(preIndex))">..</a></li>
+            <li><i class="icon-arrow-up"></i><a href="@routes.Application.file(file.getParentFile.getAbsolutePath.substring(preIndex))">..</a></li>
         } else {
-            <li><a href="/">..</a></li>
+            <li><i class="icon-arrow-up"></i><a href="/">..</a></li>
         }
         @file.listFiles.map{ file =>
-            <li><a href="@routes.Application.file(file.getAbsolutePath.substring(preIndex))">@file.getName</a></li>
+            <li>@if(file.isDirectory){<i class="icon-folder-open"></i>}else{<i class="con-download"></i>}<a href="@routes.Application.file(file.getAbsolutePath.substring(preIndex))">@file.getName</a></li>
         }
     </ul>
 
